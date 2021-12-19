@@ -21,7 +21,9 @@ namespace dotnet_api.Controllers
 
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Products>>> GetProducts() {
-            return await _context.ProductList.ToListAsync();
+            return await _context.ProductList
+                .Include( t => t.Trademarks)
+                .ToListAsync();
         }
 
 
@@ -67,6 +69,7 @@ namespace dotnet_api.Controllers
         public async Task<ActionResult<Products>> PostProduct(Products producto){
             _context.ProductList.Add(producto);
             //añadir tambien category
+            
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetProducto", new { id = producto.idProducts }, producto);

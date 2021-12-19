@@ -5,13 +5,11 @@ using System.Collections.Generic;
 namespace dotnet_api.Models {
     public class CategoriesXProduct {
 
-        [Key][Column(TypeName = "nvarchar(45)")]
+        [Key]
         public int idCategoriesXProduct { get; set;}
 
-        [Column(TypeName = "nvarchar(45)")]
-        public List<Categories> Categories_idCategory { get; set; }
+        public List<Categories> Categories_idCategory { get; set; } = new();
 
-        [Column(TypeName = "nvarchar(45)")]
-        public List<Products> Products_idProducts { get; set; } 
+        public List<Products> Products_idProducts { get; set; } = new();
     }
 }

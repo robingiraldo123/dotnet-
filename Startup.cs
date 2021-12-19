@@ -31,6 +31,10 @@ namespace dotnet_api
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "dotnet_api", Version = "v1" });
             });
+
+            services.AddControllers()
+                .AddJsonOptions( o => o.JsonSerializerOptions
+                    .ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.Preserve );
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

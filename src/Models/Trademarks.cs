@@ -5,7 +5,7 @@ using System.Collections.Generic;
 namespace dotnet_api.Models {
     public class Trademarks {
 
-        [Key][Column(TypeName = "nvarchar(45)")]
+        [Key]
         public int idTrademarks { get; set;}
 
         [Column(TypeName = "nvarchar(100)")]

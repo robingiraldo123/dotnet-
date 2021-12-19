@@ -8,6 +8,8 @@ namespace dotnet_api.Models {
         public int idUsers { get; set;}
 
         public int UserXShoppingListID { get; set; }
+
+        [ForeignKey("UserXShoppingListID")]
         public UserXShoppingList UserXShoppingList { get; set; }
     }
 }

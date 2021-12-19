@@ -10,11 +10,11 @@ namespace dotnet_api.Controllers
 {
     [ApiController]
     [Route("/api/[controller]")]
-    public class CategoryController: ControllerBase {
+    public class CategoriesController: ControllerBase {
 
         private readonly AlacenaContext _context;
 
-        public CategoryController(AlacenaContext context){
+        public CategoriesController(AlacenaContext context){
             _context = context;
         }
         
@@ -65,10 +65,20 @@ namespace dotnet_api.Controllers
 
         [HttpPost]
         public async Task<ActionResult<Categories>> PostCategory(Categories category){
+
+            //CategoriesXProduct categoryXProduct = new CategoriesXProduct();
+            //_context.CategoriesXProductList.Add(categoryXProduct);
+
+            //category.idCategoriesXProduct = categoryXProduct.idCategoriesXProduct;
+            //categoryXProduct.Categories_idCategory.Add(category);
+            //category.CategoriesXProduct = categoryXProduct;
+
             _context.CategoryList.Add(category);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetProducto", new { id = category.idCategory }, category);
+            
+
+            return CreatedAtAction("GetCategory", new { id = category.idCategory }, category);
         }
 
 
@@ -91,8 +101,6 @@ namespace dotnet_api.Controllers
         private bool CategoryExists(int id){
             return _context.CategoryList.Any(e => e.idCategory == id);
         }
-
-        
 
     }
 }
